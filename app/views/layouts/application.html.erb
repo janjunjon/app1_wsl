@@ -1,16 +1,42 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>App1</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
-    <%= yield %>
-  </body>
+<head>
+  <title>top page</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag    'application', media: 'all',
+                               'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application',
+                               'data-turbolinks-track': 'reload' %>
+</head>
+<body>
+  <header>
+    <div class="title">
+      <div class="bubble two">
+        <p>トップページ</p>
+      </div>
+      <h1>そつろんレコーダー</h1>      
+    </div>
+  </header>
+  <div class="all-wrapper">
+    <nav>
+      <p class="user">○○ さん</p>
+      <p>メニュー</p>
+      <a href="top.html" class="btn">トップ</a>
+      <a href="timeline.html" class="btn">タイムライン</a>
+      <a href="mypage.html" class="btn">マイページ</a>
+      <a href="achievement.html" class="btn">自分の進捗</a>
+      <a href="progress.html" class="btn">みんなの進捗</a>
+      <!--
+      <a href="login_form.html" class="btn unlogin">ログイン</a>
+      <a href="new_user" class="btn unlogin">新規登録</a>
+    -->
+    </nav>
+    <main>
+      <%= yield %>
+      <%= debug(params) if Rails.env.development? %>
+    </main>
+  </div>
+  <!--<footer>footer</footer>-->
+</body>
 </html>

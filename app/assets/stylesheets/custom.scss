@@ -1,0 +1,182 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+    margin: 0 auto;
+    width: 1200px;
+}
+
+li {
+    list-style: none;
+}
+
+header {
+    text-align: center;
+    height: 400px;
+    background-image: url(images01.jpg);
+    background-size: cover;
+    opacity: 0.6;
+}
+
+header, nav, .url, .news, footer {
+    border: 0.5px solid;
+    margin: 0px 0px;
+}
+
+header h1 {
+    background-color: linen;
+    margin-top: 30px;
+    width: 60%;
+    display: inline-block;
+    border: solid;
+    font-size: 50px;
+    padding: 1em;
+    border: 3px solid #ccc;
+    border-radius: 3em .7em 2em .7em/.7em 2em .7em 3em;
+}
+
+.all-wrapper {
+    display: flex;
+}
+
+main {
+    flex: 6;
+}
+
+main div {
+    border: 0.5px solid;
+}
+
+nav {
+    flex: 1;
+    text-align: center;
+    font-size: 15px;
+}
+
+nav a {
+    display: inline-block;
+    padding: 20px 10px;
+    text-decoration: none;
+    background-color: dimgray;
+    color: white;
+    border: 0.05px solid;
+    border-color: gray;
+    opacity: 0.7;
+}
+
+nav a.unlogin {
+    background-color: forestgreen;
+}
+
+.user {
+    margin: 0;
+    background-color: steelblue;
+    color: white;
+    padding: 20px 10px;
+}
+
+nav p {
+    margin: 0;
+    background-color: crimson;
+    color: white;
+    padding: 20px 10px;
+}
+
+nav a:hover {
+    background-color: black;
+    color: white;
+    opacity: 0.7;
+}
+
+.link {
+    height: 400px;
+}
+
+.url {
+    padding: 20px 20px;
+}
+
+.url legend {
+    font-size: 30px;
+}
+
+.url li {
+    padding: 3px 15px;
+    list-style-type: circle;
+    font-size: 15px;
+}
+
+.contents {
+    margin: 15px 15px;
+}
+
+@media screen and (max-width: 1200px) {
+    body {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    nav {
+        font-size: 8px;
+    }
+
+    header h1 {
+        font-size: 40px;
+    }
+}
+
+
+@import url(https://fonts.googleapis.com/css?family=Bangers);
+
+.bubble {
+    position: relative;
+}
+
+.bubble.two {
+    margin: 0 auto 0;
+    right: -200px;
+    margin-bottom: 15px;
+    margin-top: 30px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50px;
+    background: hsla(230, 70%, 55%, 1);
+    box-shadow: 40px 0 0 hsla(230, 70%, 55%, 1), 80px 0 0 hsla(230, 70%, 55%, 1), 120px 0 0 hsla(230, 70%, 55%, 1);
+}
+
+.bubble.two:before {
+    position: absolute;
+    content: '';
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    border-radius: 10px;
+    top: 60px;
+    left: 20px;
+    background: hsla(230, 70%, 55%, 1);
+}
+
+.bubble.two:after {
+    position: absolute;
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    border-radius: 5px;
+    top: 80px;
+    left: 20px;
+    background: hsla(230, 70%, 55%, 1);
+}
+
+.bubble.two p {
+    position: absolute;
+    top: 17px;
+    left: 20px;
+    width: 225px;
+    color: white;
+    font-size: 1.8em;
+    text-align: left;
+}
