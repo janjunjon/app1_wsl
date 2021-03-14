@@ -1,0 +1,8 @@
+<% provide(:title, '論文一覧') %>
+<% @users.each do |user| %>
+	<div>
+		<h2 class="contents">
+			<%= link_to user.name, user_path(user) %>
+		</h2>
+	</div>
+<% end %>

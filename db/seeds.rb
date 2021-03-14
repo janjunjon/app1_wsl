@@ -56,3 +56,17 @@ Article.create!(title: "Differences of atmospheric fields between years with hea
 					created_at: Time.zone.now,
 					updated_at: Time.zone.now)
 end
+
+30.times do |n|
+	name = "test_user#{n}"
+	email = "test_user#{n}@example.com"
+	password = "password"
+	User.create!(
+		name: name,
+		email: email,
+		password: password,
+		password_confirmation: password,
+		created_at: Time.zone.now,
+		updated_at: Time.zone.now
+	)
+end
