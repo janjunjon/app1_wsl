@@ -1,2 +1,9 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<% provide(:title, 'ユーザー編集') %>
+<div>
+	<h2 class="contents">
+		<%= @article.title %>
+	</h2>
+	<h4 class="contents"><%= @article.author %></h4>
+	<h4 class="contents"><%= @article.year %></h4>
+	<p class="contents"><%= @article.abstract %></p>
+</div>

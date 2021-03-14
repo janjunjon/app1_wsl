@@ -45,7 +45,7 @@ Article.create!(title: "Differences of atmospheric fields between years with hea
 						in years with little rain.")
 
 30.times do |n|
-	title = "test" + n.to_s
+	title = "test research #{n}"
 	author = Faker::Name.name
 	year = rand(2000..2020)
 	abstract = Faker::Lorem.sentence(word_count: 100)

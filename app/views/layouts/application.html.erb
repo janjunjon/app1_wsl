@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>top page</title>
+  <title>卒論インデックス</title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
   <%= stylesheet_link_tag    'application', media: 'all',
@@ -13,9 +13,9 @@
   <header>
     <div class="title">
       <div class="bubble two">
-        <p>トップページ</p>
+        <p><%= yield(:title) %></p>
       </div>
-      <h1>そつろんレコーダー</h1>      
+      <h1>卒論インデックス</h1>      
     </div>
   </header>
   <div class="all-wrapper">

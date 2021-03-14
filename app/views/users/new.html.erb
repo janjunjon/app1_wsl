@@ -1,2 +1,15 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<% provide(:botton_text, 'signup!') %>
+<% provide(:title, 'signup') %>
+<div class="contents">
+    <%= form_with(model: @user, local: true) do |f| %>
+        <p><%= f.label :name %></p>
+        <p><%= f.text_field :name %></p>
+        <p><%= f.label :email %></p>
+        <p><%= f.email_field :email %></p>
+        <p><%= f.label :password %></p>
+        <p><%= f.password_field :password %></p>
+        <p><%= f.label :password_confirmation %></p>
+        <p><%= f.password_field :password_confirmation %></p>
+        <p><%= f.submit yield(:botton_text) %></p>
+    <% end %>
+</div>
