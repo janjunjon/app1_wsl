@@ -1,9 +1,15 @@
 <% provide(:title, 'ユーザー編集') %>
-<div>
-	<h2 class="contents">
-		<%= @article.title %>
-	</h2>
-	<h4 class="contents"><%= @article.author %></h4>
-	<h4 class="contents"><%= @article.year %></h4>
-	<p class="contents"><%= @article.abstract %></p>
+<% provide(:botton_text, '編集') %>
+<div class="contents">
+    <%= form_with(model: @user, local: true) do |f| %>
+        <p><%= f.label :name %></p>
+        <p><%= f.text_field :name %></p>
+        <p><%= f.label :email %></p>
+        <p><%= f.email_field :email %></p>
+        <p><%= f.label :password %></p>
+        <p><%= f.password_field :password %></p>
+        <p><%= f.label :password_confirmation %></p>
+        <p><%= f.password_field :password_confirmation %></p>
+        <p><%= f.submit yield(:botton_text) %></p>
+    <% end %>
 </div>

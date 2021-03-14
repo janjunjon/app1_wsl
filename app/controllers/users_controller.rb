@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action: logged_in_user, only: [:show, :edit, :update, :destroy]
+
   def new
     @user = User.new
   end
@@ -18,9 +20,11 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find_by(id: params[:id])
   end
 
   def update
+    @user = User.update(user_params)
   end
 
   def destroy
