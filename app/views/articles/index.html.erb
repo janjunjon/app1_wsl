@@ -1,4 +1,5 @@
 <% provide(:title, '論文一覧') %>
+<% provide(:user, "#{current_user.name}さん") %>
 <% @articles.each do |article| %>
 	<div>
 		<h2 class="contents">

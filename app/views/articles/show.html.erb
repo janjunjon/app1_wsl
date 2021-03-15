@@ -1,4 +1,5 @@
 <% provide(:title, '論文詳細') %>
+<% provide(:user, "#{current_user.name}さん") %>
 <div>
 	<h2 class="contents">
 		<%= @article.title %>

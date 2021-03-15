@@ -20,7 +20,11 @@
   </header>
   <div class="all-wrapper">
     <nav>
-      <p class="user">○○ さん</p>
+      <% if is_logged_in? %>
+        <p class="user"><%= yield(:user) %></p>
+      <% else %>
+        <p class="user">ユーザーなし</p>
+      <% end %>
       <p>メニュー</p>
       <a href="top.html" class="btn">トップ</a>
       <a href="timeline.html" class="btn">タイムライン</a>
