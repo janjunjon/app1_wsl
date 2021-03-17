@@ -11,13 +11,17 @@ class SessionsController < ApplicationController
       else
         forget(@user)
       end
+      flash[:success] = "ログインしました。"
       redirect_to root_path
     else
-      redirect_to login_path
+      flash[:danger] = "ログインできませんでした。"
+      render 'new'
     end
-    # render 'new'
   end
 
   def destroy
+    logout
+    flash[:success] = "ログアウトしました。"
+    redirect_to root_path
   end
 end
