@@ -17,7 +17,7 @@ module SessionsHelper
 
     def remember(user)
         token = user.mk_token
-        digest = user.mk_digest(token)
+        digest = user.digest(token)
         cookies.permanent[:remember_digest] = digest
         cookies.permanent.signed[:user_id] = user.id
         user.remember_digest = digest
@@ -25,7 +25,7 @@ module SessionsHelper
 
     def forget(user)
         if cookies.permanent[:remember_digest] != nil
-            cookies.permanent[:remember_digest].delete
+            # cookies.permanent[:remember_digest].delete
             cookies.permanent[:remember_digest] = nil
         end
     end
