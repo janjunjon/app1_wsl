@@ -20,7 +20,6 @@ header {
 
 header, nav, .url, .news, footer {
     border: 0.5px solid;
-    margin: 0px 0px;
 }
 
 header h1 {
@@ -51,40 +50,34 @@ nav {
     flex: 1;
     text-align: center;
     font-size: 15px;
+    border: 0.5px solid;
 }
+
+// .nav-item {
+//     margin: 0 auto;
+// }
 
 nav a {
-    display: inline-block;
+    display: block;
     padding: 20px 10px;
     text-decoration: none;
-    background-color: dimgray;
-    color: white;
+    // background-color: dimgray;
+    // color: white;
     border: 0.05px solid;
-    border-color: gray;
+    // border-color: gray;
     opacity: 0.7;
-}
-
-nav a.unlogin {
-    background-color: forestgreen;
-}
-
-.user {
-    margin: 0;
-    background-color: steelblue;
-    color: white;
-    padding: 20px 10px;
 }
 
 nav p {
     margin: 0;
-    background-color: crimson;
-    color: white;
-    padding: 20px 10px;
+    // background-color: crimson;
+    // color: white;
+    // padding: 20px 10px;
 }
 
 nav a:hover {
-    background-color: black;
-    color: white;
+    // background-color: black;
+    // color: white;
     opacity: 0.7;
 }
 

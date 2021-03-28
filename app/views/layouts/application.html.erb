@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>卒論インデックス</title>
+  <title>Lagis卒論インデックス</title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
   <%= stylesheet_link_tag    'application', media: 'all',
@@ -14,32 +14,42 @@
 </head>
 <body>
   <header>
+    <%= render 'layouts/flash' %>
     <div class="title">
       <div class="bubble two">
         <p><%= yield(:title) %></p>
       </div>
-      <h1>卒論インデックス</h1>      
+      <h1>Lagis卒論インデックス</h1>      
     </div>
   </header>
   <div class="all-wrapper">
     <nav>
-      <% if is_logged_in? %>
-        <p class="user"><%= yield(:user) %></p>
-        <p class="login"><%= link_to 'ログアウト', logout_path, method: :delete %></p>
-      <% else %>
-        <p class="user">ユーザーなし</p>
-        <p class="login"><%= link_to 'ログイン', login_path %></p>
-      <% end %>
-      <p>メニュー</p>
-      <a href="top.html" class="btn">トップ</a>
-      <a href="timeline.html" class="btn">タイムライン</a>
-      <a href="mypage.html" class="btn">マイページ</a>
-      <a href="achievement.html" class="btn">自分の進捗</a>
-      <a href="progress.html" class="btn">みんなの進捗</a>
-      <!--
-      <a href="login_form.html" class="btn unlogin">ログイン</a>
-      <a href="new_user" class="btn unlogin">新規登録</a>
-    -->
+      <div>
+          <li class="nav-item active">
+            <%= link_to 'トップページ', root_path, class: "nav-link" %>
+          </li>
+          <% if is_logged_in? %>
+            <li class="nav-item active">
+              <%= link_to yield(:user), user_path(current_user), class: "nav-link" %>
+            </li>
+            <li class="nav-item active">
+              <%= link_to 'ログアウト', logout_path, method: :delete, class: "nav-link" %>
+            </li>
+          <% else %>
+            <li class="nav-item disabled">
+              <%= link_to 'ユーザーなし', '#', class: "nav-link disabled" %>
+            </li>
+            <li class="nav-item active">
+              <%= link_to 'ログイン', login_path, class: "nav-link" %>
+            </li>
+          <% end %>
+          <li class="nav-item active">
+            <%= link_to '論文一覧', articles_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item active">
+            <%= link_to 'ユーザー一覧', users_path, class: "nav-link" %>
+          </li>
+      </div>
     </nav>
     <main>
       <%= yield %>
