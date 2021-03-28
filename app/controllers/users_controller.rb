@@ -11,8 +11,10 @@ class UsersController < ApplicationController
     if @user.valid?
       @user.save
       redirect_to user_path(@user)
+      flash[:success] = "ようこそ#{@user.name}さん！"
     else
       redirect_to new_user_path
+      flash[:danger] = '入力情報が有効ではありません。'
     end
   end
 
