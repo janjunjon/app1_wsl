@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+array = ["bachelor", "master"]
 Article.create!(title: "Differences of atmospheric fields between years with heavy rain and little rain over Kyushu region",
 				author: "Juntaro ISHIHARA",
 				year: 2020,
@@ -42,7 +43,8 @@ Article.create!(title: "Differences of atmospheric fields between years with hea
 						point of relative vorticity, a disturbance over 
 						north off Kyushu was stronger in years with heavy 
 						rain, and high pressure over south off Kyushu was stronger 
-						in years with little rain.")
+						in years with little rain.",
+				degree: array[0])
 
 30.times do |n|
 	title = "test research #{n}"
@@ -53,6 +55,7 @@ Article.create!(title: "Differences of atmospheric fields between years with hea
 					author: author,
 					year: year,
 					abstract: abstract,
+					degree: array[rand(0..1)],
 					created_at: Time.zone.now,
 					updated_at: Time.zone.now)
 end
