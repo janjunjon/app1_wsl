@@ -1,6 +1,9 @@
 <% provide(:title, '論文一覧') %>
+<div class="research">
+    <%= render 'layouts/research' %>
+</div>
 <% @articles.each do |article| %>
-	<div>
+	<div class="elements">
 		<h2 class="contents">
 			<%= link_to article.title, article_path(article) %>
 		</h2>

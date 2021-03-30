@@ -1,6 +1,6 @@
 <% provide(:title, 'ユーザー一覧') %>
 <% @users.each do |user| %>
-	<div>
+	<div class="elements">
 		<h2 class="contents">
 			<%= link_to user.name, user_path(user) %>
 		</h2>
