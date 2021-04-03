@@ -1,5 +1,7 @@
 <% provide(:title, "#{@user.name}さん") %>
 <div class="contents">
     <h4><%= @user.name %></h4>
-    <h4><%= @user.email %></h4>
+    <% if session[:user_id] == @user.id %>
+        <h4><%= @user.email %></h4>
+    <% end %>
 </div>
