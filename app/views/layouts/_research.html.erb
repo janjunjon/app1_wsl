@@ -1,10 +1,9 @@
 <%= form_with(url: articles_path, method: :get) do |f|  %>
-    <p><%= f.label :paper_type %></p>
-    <p><%= f.label :bachelor %></p>
-    <p><%= f.check_box :bachelor %></p>
-    <p><%= f.label :master %></p>
-    <p><%= f.check_box :master %></p>
+    <p><%= f.label :degree %></p>
+    <p><%= f.select :degree, [[""], ["bachelor"], ["master"]] %></p>
     <p><%= f.label :keyword %></p>
-    <p><%= f.text_area :keyword %></p>
+    <p><%= f.text_field :keyword %></p>
+    <p><%= f.label :year %></p>
+    <p><%= f.text_field :year %></p>    
     <p><%= f.submit 'search' %></p>
 <% end %>
