@@ -2,17 +2,17 @@ module ArticlesHelper
     def search_articles
         if params[:degree] && params[:keyword] && params[:year] 
             @articles = Article.where("title like ? OR abstract like ?", "%#{params[:keyword]}%", "%#{params[:keyword]}%").where(degree: params[:degree], year: params[:year]).paginate(page: params[:page], per_page: 10)
-        elsif params[:degree] && params[:year] 
+        elsif params[:degree] && params[:keyword].blank? && params[:year]
             @articles = Article.where(degree: params[:degree], year: params[:year]).paginate(page: params[:page], per_page: 10)
-        elsif params[:degree] && params[:keyword] 
+        elsif params[:degree] && params[:keyword] && params[:year].blank?
             @articles = Article.where("title like ? OR abstract like ?", "%#{params[:keyword]}%", "%#{params[:keyword]}%").where(degree: params[:degree]).paginate(page: params[:page], per_page: 10)
-        elsif params[:keyword] && params[:year] 
+        elsif params[:degree].blank? && params[:keyword] && params[:year]
             @articles = Article.where("title like ? OR abstract like ?", "%#{params[:keyword]}%", "%#{params[:keyword]}%").where(year: params[:year]).paginate(page: params[:page], per_page: 10)
-        elsif params[:degree] 
+        elsif params[:degree]
             @articles = Article.where(degree: params[:degree]).paginate(page: params[:page], per_page: 10)
-        elsif params[:year] 
+        elsif params[:year]
             @articles = Article.where(year: params[:year]).paginate(page: params[:page], per_page: 10)
-        elsif params[:keyword] 
+        elsif params[:keyword]
             @articles = Article.where("title like ? OR abstract like ?", "%#{params[:keyword]}%", "%#{params[:keyword]}%").paginate(page: params[:page], per_page: 10)
         end
     end
