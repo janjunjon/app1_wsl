@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   root 'static_pages#top'
   get 'articles', to: 'articles#index'
   get 'article/:id', to: 'articles#show', as: :article
+  get 'articles/search', to: 'articles#search', as: :search
   resources :users
 end

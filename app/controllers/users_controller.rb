@@ -42,12 +42,6 @@ class UsersController < ApplicationController
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
 
-    def logged_in_user
-      if session[:user_id] == nil
-        redirect_to login_path
-      end
-    end
-
     def correct_user
       if session[:user_id] != params[:id]
         redirect_to root_path

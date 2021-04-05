@@ -1,0 +1,16 @@
+<% provide(:title, '論文検索') %>
+<% if is_params_empty? %>
+    <div class="research">
+        <%= render 'layouts/search' %>
+    </div>
+<% else %>
+    <% @articles.each do |article| %>
+        <div class="elements">
+            <h2 class="contents">
+                <%= link_to article.title, article_path(article) %>
+            </h2>
+            <p class="contents"><%= article.abstract %></p>
+        </div>
+    <% end %>
+    <%= will_paginate %>
+<% end %>

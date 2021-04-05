@@ -6,6 +6,7 @@ module SessionsHelper
     def logged_in_user
         if session[:user_id] == nil
           redirect_to login_path
+          flash[:danger] = "ログインしてください"
         end
     end
 
