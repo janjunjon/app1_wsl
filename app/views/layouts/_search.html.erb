@@ -1,9 +1,9 @@
 <%= form_with(url: search_path, method: :get) do |f|  %>
-    <p><%= f.label :degree %></p>
-    <p><%= f.select :degree, [[""], ["bachelor"], ["master"]] %></p>
-    <p><%= f.label :keyword %></p>
-    <p><%= f.text_field :keyword %></p>
-    <p><%= f.label :year %></p>
-    <p><%= f.text_field :year %></p>    
-    <p><%= f.submit 'search' %></p>
+    <p><%= f.label :"学位" %></p>
+    <p><%= f.select :degree, [[""], ["学士"], ["修士"]], {}, class: 'form-control' %></p>
+    <p><%= f.label :"キーワード" %></p>
+    <p><%= f.text_field :keyword, class: 'form-control' %></p>
+    <p><%= f.label :"年度" %></p>
+    <p><%= f.text_field :year, class: 'form-control' %></p>    
+    <p class="search-button"><%= f.submit 'search', class: "btn btn-block btn-primary" %></p>
 <% end %>
