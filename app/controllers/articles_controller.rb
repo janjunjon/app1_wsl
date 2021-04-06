@@ -7,14 +7,7 @@ class ArticlesController < ApplicationController
 	end
 
 	def search
-		# search_articles
-		if params[:degree] && params[:keyword] && params[:year] 
-            @articles = Article.where("title like ? OR abstract like ?", "%#{params[:keyword]}%", "%#{params[:keyword]}%").where(degree: params[:degree], year: params[:year]).paginate(page: params[:page], per_page: 10)
-        elsif params[:degree] && !params[:keyword].present? && params[:year]
-            @articles = Article.where(degree: params[:degree], year: params[:year]).paginate(page: params[:page], per_page: 10)
-        elsif params[:degree] && params[:keyword] && !params[:year].present?
-            @articles = Article.where("title like ? OR abstract like ?", "%#{params[:keyword]}%", "%#{params[:keyword]}%").where(degree: params[:degree]).paginate(page: params[:page], per_page: 10)
-        end
+		search_articles
 	end
 
 	def show
