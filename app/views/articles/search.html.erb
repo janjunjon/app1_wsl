@@ -1,6 +1,13 @@
-<% provide(:title, '論文検索') %>
 <% if is_params_empty? %>
-    <div class="research">
+    <% provide(:title, '論文検索') %>
+<% else %>
+    <% provide(:title, '検索結果') %>
+<% end %>
+<div class="page-title">
+    <h2><%= yield(:title) %></h2>
+</div>
+<% if is_params_empty? %>
+    <div class="search">
         <%= render 'layouts/search' %>
     </div>
 <% else %>

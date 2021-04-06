@@ -1,13 +1,15 @@
 <% provide(:botton_text, 'login!') %>
 <% provide(:title, 'login') %>
-<div class="contents">
+<div class="login">
     <%= form_with(url: login_path, scope: :session, local: true) do |f| %>
         <p><%= f.label :email %></p>
-        <p><%= f.email_field :email %></p>
+        <p><%= f.email_field :email, class: "form-control" %></p>
         <p><%= f.label :password %></p>
-        <p><%= f.password_field :password %></p>
-        <p><%= f.label :remember %></p>
-        <p><%= f.check_box :remember %></p>
-        <p><%= f.submit yield(:botton_text) %></p>
+        <p><%= f.password_field :password, class: "form-control" %></p>
+        <p>
+            <%= f.check_box :remember %>
+            <%= f.label :"remember in this blowser" %>
+        </p>
+        <p><%= f.submit yield(:botton_text), class: "btn btn-block btn-primary" %></p>
     <% end %>
 </div>

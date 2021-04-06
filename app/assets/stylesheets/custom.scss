@@ -60,8 +60,28 @@ main div.elements {
 //     // width: 100px;
 // }
 
-.research {
-    padding: 10px 10px;
+.login {
+    margin: 0 auto;
+    width: 70%;
+}
+
+.page-title h2{
+    text-align: center;
+    padding: 5px 5px;
+}
+
+.search {
+    padding: 10px;
+    margin: 0 auto;
+    width: 70%;
+}
+
+.search-button {
+    padding: 20px 0px;
+}
+
+.form-select {
+    padding-left: 80px;
 }
 
 nav {
@@ -198,3 +218,4 @@ nav a:hover {
     font-size: 1.8em;
     text-align: left;
 }
+
