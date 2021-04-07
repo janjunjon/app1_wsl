@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:show, :edit, :update, :destroy]
-  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :correct_user, only: [:update, :destroy]
 
   def new
     @user = User.new
@@ -35,6 +35,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    @user.destroy
   end
 
   private
@@ -45,6 +46,7 @@ class UsersController < ApplicationController
     def correct_user
       if session[:user_id] != params[:id]
         redirect_to root_path
+        flash[:danger] = "適性ユーザーではありません。"
       end
     end
 end

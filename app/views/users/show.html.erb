@@ -1,7 +1,16 @@
 <% provide(:title, "#{@user.name}さん") %>
-<div class="contents">
-    <h4><%= @user.name %></h4>
+<div class="page-title">
+    <h2><%= yield(:title) %></h2>
+</div>
+<div class="user-show">
+    <!-- <h4><%= @user.name %></h4> -->
     <% if session[:user_id] == @user.id %>
         <h4><%= @user.email %></h4>
+        <ul class="edit-destroy">
+            <li>
+                <%= link_to '編集', edit_user_path(@user) %>
+                <%= link_to '削除', user_path(@user) %>
+            </li>
+        </ul>
     <% end %>
 </div>
