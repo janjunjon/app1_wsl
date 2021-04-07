@@ -1,6 +1,9 @@
 <% provide(:botton_text, 'login!') %>
-<% provide(:title, 'login') %>
-<div class="login">
+<% provide(:title, 'Login') %>
+<div class="page-title">
+    <h2><%= yield(:title) %></h2>
+</div>
+<div class="form">
     <%= form_with(url: login_path, scope: :session, local: true) do |f| %>
         <p><%= f.label :email %></p>
         <p><%= f.email_field :email, class: "form-control" %></p>
@@ -11,5 +14,6 @@
             <%= f.label :"remember in this blowser" %>
         </p>
         <p><%= f.submit yield(:botton_text), class: "btn btn-block btn-primary" %></p>
+        <p><%= link_to 'Sign up?', new_user_path %></p>
     <% end %>
 </div>

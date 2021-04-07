@@ -47,20 +47,8 @@ main div.elements {
     border: 0.5px solid;
 }
 
-// main div {
-//     display: block;
-//     margin-left: auto;
-//     margin-right: auto;
-// }
-
-// .content-center {
-//     display: inline-block;
-//     margin-left: auto;
-//     margin-right: auto;
-//     // width: 100px;
-// }
-
-.login {
+.form {
+    padding: 20px 0px;
     margin: 0 auto;
     width: 70%;
 }
@@ -106,17 +94,37 @@ nav a {
     opacity: 0.7;
 }
 
-nav p {
-    margin: 0;
-    // background-color: crimson;
-    // color: white;
-    // padding: 20px 10px;
+.nav-hover:hover {
+    color: white;
 }
 
-nav a:hover {
-    // background-color: black;
-    // color: white;
-    opacity: 0.7;
+.nav-link {
+    background-color: gray;
+    color: white;
+}
+
+.nav-top {
+    color: black;
+}
+
+.nav-user {
+    background-color: rgb(50, 209, 50);
+    color: white;
+}
+
+.nav-login {
+    background-color: rgb(53, 162, 199);
+    color: white;
+}
+
+.nav-logout {
+    background-color: rgb(224, 97, 93);
+    color: white;
+}
+
+.edit-destroy {
+    // float: left;
+    padding: 10px 0px;
 }
 
 .link {
@@ -137,6 +145,11 @@ nav a:hover {
     font-size: 15px;
 }
 
+.user-show {
+    text-align: center;
+    padding: 10px;
+}
+
 .contents {
     padding: 15px 15px;
 }
@@ -147,6 +160,13 @@ nav a:hover {
     color: white;
     padding: 20px 10px;
 }
+
+// .pagination {
+//     // padding: 0px 20px;
+//     // text-align: center;
+//     // margin: 0 auto;
+//     width: 80%;
+// }
 
 @media screen and (max-width: 1200px) {
     body {

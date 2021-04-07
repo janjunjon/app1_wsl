@@ -1,15 +1,18 @@
 <% provide(:title, 'ユーザー編集') %>
 <% provide(:botton_text, '編集') %>
-<div class="contents">
+<div class="page-title">
+    <h2><%= yield(:title) %></h2>
+</div>
+<div class="form">
     <%= form_with(model: @user, local: true) do |f| %>
         <p><%= f.label :name %></p>
-        <p><%= f.text_field :name %></p>
+        <p><%= f.text_field :name, class: "form-control" %></p>
         <p><%= f.label :email %></p>
-        <p><%= f.email_field :email %></p>
+        <p><%= f.email_field :email, class: "form-control" %></p>
         <p><%= f.label :password %></p>
-        <p><%= f.password_field :password %></p>
+        <p><%= f.password_field :password, class: "form-control" %></p>
         <p><%= f.label :password_confirmation %></p>
-        <p><%= f.password_field :password_confirmation %></p>
-        <p><%= f.submit yield(:botton_text) %></p>
+        <p><%= f.password_field :password_confirmation, class: "form-control" %></p>
+        <p><%= f.submit yield(:botton_text), class: "btn btn-block btn-primary" %></p>
     <% end %>
 </div>
