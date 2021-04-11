@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:show, :edit, :update, :destroy]
-  before_action :correct_user, only: [:update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   def new
     @user = User.new
@@ -19,7 +19,8 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
+    # @users = User.all
+    @users = User.all.paginate(page: params[:page], per_page: 30)
   end
 
   def show
@@ -31,11 +32,20 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.update(user_params)
+    @user = User.find_by(id: params[:id])
+    if @user.update(user_params)
+      flash[:success] = "更新しました。"
+      redirect_to @user
+    else
+      render 'users/edit'
+    end
   end
 
   def destroy
+    @user = User.find_by(id: params[:id])
     @user.destroy
+    flash[:info] = "ユーザーを削除しました。"
+    redirect_to root_path
   end
 
   private
@@ -44,8 +54,9 @@ class UsersController < ApplicationController
     end
 
     def correct_user
-      if session[:user_id] != params[:id]
-        redirect_to root_path
+      @user = User.find_by(id: params[:id])
+      if @user != current_user
+        redirect_to users_path
         flash[:danger] = "適性ユーザーではありません。"
       end
     end

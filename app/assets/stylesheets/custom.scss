@@ -18,7 +18,7 @@ header {
     opacity: 0.6;
 }
 
-header, nav, .url, .news, footer {
+header {
     border: 0.5px solid;
 }
 
@@ -40,11 +40,11 @@ header h1 {
 
 main {
     flex: 6;
-    border: 0.5px solid;
+    // border: 0.5px solid;
 }
 
 main div.elements {
-    border: 0.5px solid;
+    border-bottom: 0.5px solid gray;
 }
 
 .form {
@@ -76,7 +76,7 @@ nav {
     flex: 1;
     text-align: center;
     font-size: 15px;
-    border: 0.5px solid;
+    // border: 0.5px solid;
 }
 
 // .nav-item {
@@ -118,7 +118,7 @@ nav a {
 }
 
 .nav-logout {
-    background-color: rgb(224, 97, 93);
+    background-color: rgb(214, 134, 132);
     color: white;
 }
 
@@ -151,7 +151,7 @@ nav a {
 }
 
 .contents {
-    padding: 15px 15px;
+    padding: 20px;
 }
 
 .login {
@@ -159,6 +159,23 @@ nav a {
     background-color: gray;
     color: white;
     padding: 20px 10px;
+}
+
+footer {
+    // float: left;
+    border-top: 1px solid gray;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    padding: 10px;
+}
+
+footer li {
+    float: right;
+    padding-left: 10px;
+}
+
+footer a {
+    color: gray;
 }
 
 // .pagination {
@@ -180,7 +197,7 @@ nav a {
     }
 
     header h1 {
-        font-size: 40px;
+        font-size: 35px;
     }
 }
 
