@@ -1,0 +1,14 @@
+<% provide(:title, 'Lagis認証') %>
+<% provide(:botton_text, '送信') %>
+<div class="page-title">
+    <h2><%= yield(:title) %></h2>
+</div>
+<div class="form">
+    <%= form_with(model: @code, scope: :code, local: true) do |f| %>
+        <p><%= f.label :"Lagis認証用コード" %></p>
+        <p><%= f.password_field :password, class: "form-control" %></p>
+        <p><%= f.label :"確認用" %></p>
+        <p><%= f.password_field :password_confirmation, class: "form-control" %></p>
+        <p><%= f.submit yield(:botton_text), class: "btn btn-block btn-primary" %></p>
+    <% end %>
+</div>

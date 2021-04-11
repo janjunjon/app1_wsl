@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_action :is_lagis?
+  
   def new
   end
 

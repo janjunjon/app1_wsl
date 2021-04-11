@@ -48,4 +48,11 @@ module SessionsHelper
             # cookies.permanent[:remember_digest] = nil
         end
     end
+
+    def is_lagis?
+        if !cookies.permanent.signed[:id] && !cookies.permanent[:lagis_autentication]
+          redirect_to lagis_path
+          flash[:danger] = "Lagis認証コードが確認できていません。"
+        end
+    end
 end

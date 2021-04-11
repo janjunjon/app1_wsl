@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
 	include ArticlesHelper
+	before_action :is_lagis?
 	before_action :logged_in_user, only: :show
 
 	def index

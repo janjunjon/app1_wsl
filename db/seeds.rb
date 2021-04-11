@@ -73,3 +73,11 @@ end
 		updated_at: Time.zone.now
 	)
 end
+
+Code.create!(
+	classification: "Lagis authentication",
+	password: "lagis_info",
+	password_confirmation: "lagis_info",
+	created_at: Time.zone.now,
+	updated_at: Time.zone.now
+	)
