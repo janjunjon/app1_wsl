@@ -4,7 +4,7 @@
     <h2><%= yield(:title) %></h2>
 </div>
 <div class="form">
-    <%= form_with(model: @code, scope: :code, local: true) do |f| %>
+    <%= form_with(url: lagis_post_path, scope: :code, local: true) do |f| %>
         <p><%= f.label :"Lagis認証用コード" %></p>
         <p><%= f.password_field :password, class: "form-control" %></p>
         <p><%= f.label :"確認用" %></p>

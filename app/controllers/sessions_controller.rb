@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
         forget @user
       end
       flash[:success] = "ログインしました。"
-      redirect_to root_path
+      redirect_to session[:current_url]
     else
       flash[:danger] = "ログインできませんでした。"
       render 'new'

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get '/lagis', to: 'codes#index', as: :lagis
   post '/lagis', to: 'codes#post', as: :lagis_post
+  get '/lagis/delete', to: 'codes#delete'
+  delete '/lagis/delete', to: 'codes#destroy'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'

@@ -1,0 +1,6 @@
+<%= link_to 'delete Lagis authentication', lagis_delete_path, method: :delete %>
+<% if session[:lagis_id] && session[:lagis_authentication] %>
+    <p><%= session[:lagis_id] %></p>
+<% else %>
+    <p>nothing</p>
+<% end %>

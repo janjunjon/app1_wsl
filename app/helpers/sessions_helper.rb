@@ -5,8 +5,9 @@ module SessionsHelper
 
     def logged_in_user
         if session[:user_id] == nil
-          redirect_to login_path
-          flash[:danger] = "ログインしてください"
+            session[:current_url] = request.referer
+            redirect_to login_path
+            flash[:danger] = "ログインしてください"
         end
     end
 
@@ -51,9 +52,15 @@ module SessionsHelper
 
     def is_lagis?
         # if !cookies.permanent.signed[:id] && !cookies.permanent[:lagis_autentication]
-        if !session[:id] && !session[:lagis_autentication]
-          redirect_to lagis_path
-          flash[:danger] = "Lagis認証コードが確認できていません。"
+        if !session[:lagis_id] && !session[:lagis_authentication]
+            session[:current_url] = request.referer
+            redirect_to lagis_path
+            flash[:danger] = "Lagis認証コードが確認できていません。"
         end
+    end
+
+    def delete_authentication
+        session.delete(:lagis_id)
+        session.delete(:lagis_authentication)
     end
 end
