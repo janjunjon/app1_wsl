@@ -147,7 +147,7 @@ nav a {
 
 .user-show {
     text-align: center;
-    padding: 10px;
+    padding: 0px 10px;
 }
 
 .contents {
@@ -184,6 +184,10 @@ footer a {
 //     // margin: 0 auto;
 //     width: 80%;
 // }
+
+.img-circle {
+    border: solid 0.5px gray;
+}
 
 @media screen and (max-width: 1200px) {
     body {

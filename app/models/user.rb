@@ -5,6 +5,7 @@ class User < ApplicationRecord
 	validates :email, presence: true, length: { maximum: 200 }, format: { with: valid_format}, uniqueness: true
 	validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 	has_secure_password
+	has_one_attached :image
 
 	def self.mk_token
 		SecureRandom.urlsafe_base64

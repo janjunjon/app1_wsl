@@ -2,6 +2,7 @@
 <% @users.each do |user| %>
 	<div class="elements">
 		<h2 class="contents">
+			<%= link_to image_tag("icon01.png", alt: "user-default-icon", width: "60px", class: "img-rounded"), user_path(user) %>
 			<%= link_to user.name, user_path(user) %>
 		</h2>
 	</div>
