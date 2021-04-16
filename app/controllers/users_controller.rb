@@ -35,6 +35,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find_by(id: params[:id])
     if @user.update(user_params)
+      @user.image.attach(params[:user][:image])
       flash[:success] = "更新しました。"
       redirect_to @user
     else

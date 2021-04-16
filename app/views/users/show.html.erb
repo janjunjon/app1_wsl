@@ -1,7 +1,11 @@
 <% provide(:title, "#{@user.name}さん") %>
 
 <div class="page-title">
-    <h2><%= link_to image_tag("icon01.png", alt:"user-default-icon", width: "80px", class: "img-rounded") %></h2>
+    <% if @user.image.attached? %>
+        <h2><%= link_to image_tag(@user.image, alt: "user-icon", width: "80px", class: "img-rounded") %></h2>
+    <% else %>
+        <h2><%= link_to image_tag("icon01.png", alt:"user-default-icon", width: "80px", class: "img-rounded") %></h2>
+    <% end %>
     <h2><%= yield(:title) %></h2>
 </div>
 <div class="user-show">

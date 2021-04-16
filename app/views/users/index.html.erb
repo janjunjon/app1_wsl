@@ -2,7 +2,11 @@
 <% @users.each do |user| %>
 	<div class="elements">
 		<h2 class="contents">
-			<%= link_to image_tag("icon01.png", alt: "user-default-icon", width: "60px", class: "img-rounded"), user_path(user) %>
+			<% if user.image.attached? %>
+				<%= link_to image_tag(user.image, alt: "user-default-icon", width: "80px", class: "img-rounded"), user_path(user) %>
+			<% else %>
+				<%= link_to image_tag("icon01.png", alt: "user-default-icon", width: "80px", class: "img-rounded"), user_path(user) %>
+			<% end %>
 			<%= link_to user.name, user_path(user) %>
 		</h2>
 	</div>
