@@ -32,8 +32,8 @@ class User < ApplicationRecord
 		BCrypt::Password.new(remember_digest).is_password?(token)
 	end
 
-	def resized_image
-		self.image.variant(gravity: :center, resize:"80x80^", crop:"80x80+0+0").processed
+	def resized_image(size)
+		self.image.variant(gravity: :center, resize:"#{size}x#{size}^", crop:"#{size}x#{size}+0+0").processed
 		# image.variant(resize_to_limit: [500, 500])
 	end
 end
