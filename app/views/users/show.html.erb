@@ -1,11 +1,17 @@
 <% provide(:title, "#{@user.name}さん") %>
+
 <div class="page-title">
+    <% if @user.image.attached? %>
+        <h2><%= link_to image_tag(@user.resized_image(150), alt: "user-icon", class: "img-rounded") %></h2>
+    <% else %>
+        <h2><%= link_to image_tag("icon01.png", alt:"user-default-icon", width: "80px", class: "img-rounded") %></h2>
+    <% end %>
     <h2><%= yield(:title) %></h2>
 </div>
 <div class="user-show">
-    <!-- <h4><%= @user.name %></h4> -->
+    <!-- <h2><%= @user.name %></h2> -->
     <% if session[:user_id] == @user.id %>
-        <h4><%= @user.email %></h4>
+        <h3><%= @user.email %></h3>
         <ul class="edit-destroy">
             <li>
                 <%= link_to '編集', edit_user_path(@user) %>

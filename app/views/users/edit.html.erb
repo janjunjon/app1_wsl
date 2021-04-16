@@ -13,6 +13,8 @@
         <p><%= f.password_field :password, class: "form-control" %></p>
         <p><%= f.label :password_confirmation %></p>
         <p><%= f.password_field :password_confirmation, class: "form-control" %></p>
+        <p><%= f.label :image %></p>
+        <p><%= f.file_field :image, class: "filestyle", accept: "image/jpeg, image/gif, image/png" %></p>
         <p><%= f.submit yield(:botton_text), class: "btn btn-block btn-primary" %></p>
     <% end %>
 </div>
