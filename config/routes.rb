@@ -11,6 +11,6 @@ Rails.application.routes.draw do
   get 'articles', to: 'articles#index'
   get 'article/:id', to: 'articles#show', as: :article
   get 'articles/search', to: 'articles#search', as: :search
-  get 'account_activations/', to: 'account_activations#edit'
+  get 'account_activations/:token/edit', to: 'account_activations#edit'
   resources :users
 end

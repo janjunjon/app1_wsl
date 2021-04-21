@@ -1,0 +1,4 @@
+<h1>@user.email</h1>
+<p>
+  <%= link_to 'アカウント有効化のリンク', edit_account_activation_path(@user.activation_token, @user.email) %>
+</p>

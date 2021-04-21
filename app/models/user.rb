@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-	attr_accessor :remember_token
+	attr_accessor :remember_token, :activation_token
 	validates :name, presence: true, length: { maximum: 20 }
 	valid_format = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 	validates :email, presence: true, length: { maximum: 200 }, format: { with: valid_format}, uniqueness: true
@@ -28,12 +28,23 @@ class User < ApplicationRecord
 		self.update_attribute(:remember_digest, nil)
 	end
 
-	def authenticated?(token)
-		BCrypt::Password.new(remember_digest).is_password?(token)
-	end
-
 	def resized_image(size)
 		self.image.variant(gravity: :center, resize:"#{size}x#{size}^", crop:"#{size}x#{size}+0+0").processed
 		# image.variant(resize_to_limit: [500, 500])
+	end
+
+	def activation
+		self.activation_token = User.mk_token
+		self.update_columns(activation_digest: User.digest(activation_token), updated_at: Time.zone.now)
+	end
+
+	def authenticated?(attribute, token)
+		digest = self.send("#{attribute}_token")
+		return false if digest.nil?
+		BCrypt::Password.new(token).is_password?(digest)
+	end
+
+	def send_email(mailtype)
+		UserMailer.send("#{mailtype}", self).deliver_now
 	end
 end
