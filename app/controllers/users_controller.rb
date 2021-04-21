@@ -9,8 +9,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.valid?
-      @user.save
+    if @user.save
+      @user.send_email("account_activation")
       redirect_to user_path(@user)
       flash[:success] = "ようこそ#{@user.name}さん！"
     else

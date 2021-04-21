@@ -8,12 +8,7 @@ class ArticlesController < ApplicationController
 	end
 
 	def search
-		if params[:degree] == "学士"
-			degree = "bachelor"
-		elsif params[:degree] == "修士"
-			degree = "master"
-		end
-		search_articles(degree)
+		search_articles
 	end
 
 	def show
