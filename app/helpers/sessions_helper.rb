@@ -4,10 +4,10 @@ module SessionsHelper
     end
 
     def logged_in_user
-        if session[:user_id] == nil
+        if session[:user_id].nil?
             session[:current_url] = request.referer
             redirect_to login_path
-            flash[:danger] = "ログインしてください"
+            flash[:danger] = "ログインしてください。"
         end
     end
 

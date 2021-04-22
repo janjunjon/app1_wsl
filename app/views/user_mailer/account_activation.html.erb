@@ -1,4 +1,6 @@
-<h1>@user.email</h1>
+<h2>アカウントの認証を行ってください。</h2>
+<p>@user.email</p>
 <p>
-  <%= link_to 'アカウント有効化のリンク', edit_account_activation_path(@user.activation_token, @user.email) %>
+  <%= link_to 'アカウント有効化のリンク', edit_account_activation_url(@user.activation_token, @user.email) %>
 </p>
+<p>Lagis卒論インデックス</p>
