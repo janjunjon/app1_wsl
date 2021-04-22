@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :is_lagis?
   before_action :logged_in_user, only: [:show, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :already_logged_in, only: [:new, :create]
 
   def new
     @user = User.new
@@ -10,7 +11,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      @user.activation
       @user.send_email("account_activation")
+      log_in @user
       redirect_to user_path(@user)
       flash[:success] = "ようこそ#{@user.name}さん！"
     else
@@ -21,7 +24,7 @@ class UsersController < ApplicationController
 
   def index
     # @users = User.all
-    @users = User.all.paginate(page: params[:page], per_page: 30)
+    @users = User.all.order(id: "DESC").paginate(page: params[:page], per_page: 30)
   end
 
   def show
@@ -60,6 +63,12 @@ class UsersController < ApplicationController
       if @user != current_user
         redirect_to users_path
         flash[:danger] = "適性ユーザーではありません。"
+      end
+    end
+
+    def already_logged_in
+      if current_user
+        redirect_to root_path
       end
     end
 end

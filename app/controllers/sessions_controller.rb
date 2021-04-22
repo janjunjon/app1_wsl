@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   before_action :is_lagis?
+  before_action :already_logged_in, only: [:new, :create]
   
   def new
   end
@@ -26,4 +27,11 @@ class SessionsController < ApplicationController
     flash[:success] = "ログアウトしました。"
     redirect_to root_path
   end
+
+  private
+    def already_logged_in
+      if current_user        
+        redirect_to root_path
+      end
+    end
 end

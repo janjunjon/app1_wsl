@@ -47,6 +47,12 @@ main div.elements {
     border-bottom: 0.5px solid gray;
 }
 
+.top-page {
+    padding: 10px;
+    margin: 0 auto;
+    width: 70%;
+}
+
 .form {
     padding: 20px 0px;
     margin: 0 auto;
@@ -265,3 +271,58 @@ footer a {
     text-align: left;
 }
 
+.news-contents {
+    display: flex;
+    height: 35px;
+    border-bottom:1px solid gray;
+}
+
+.news-contents dt {
+    flex: 1.5;
+}
+
+.news-contents a {
+    flex: 0.7;
+    text-align: center;
+    margin: 3px;
+}
+
+.news-contents dd{
+    flex: 7.8;
+}
+
+.top-page dl{
+    padding-top: 10px;
+    margin: 0 auto;
+    width: 80%;
+}
+
+.top-page dt {
+    // border-bottom:1px solid #ccc;
+    float:left;
+    padding:10px 5px;
+}
+
+.top-page dd {
+    // border-bottom:1px solid #ccc;
+    // margin-left:100px;
+    padding:10px 5px;
+}
+
+.commodity {
+    background-color:rgb(53, 162, 199);
+    border-radius:5px;
+    color:#fff;
+    margin:0 20px;
+    padding:5px 15px;
+    text-decoration:none;
+}
+
+.news-default {
+    background-color:rgb(214, 134, 132);
+    border-radius:5px;
+    color:#fff;
+    margin:0 20px;
+    padding:5px 15px;
+    text-decoration:none;
+}
