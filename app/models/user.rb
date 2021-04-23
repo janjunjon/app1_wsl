@@ -9,6 +9,7 @@ class User < ApplicationRecord
 	has_secure_password
 	has_one_attached :image
 	# mount_uploader :image, ImageUploader
+	before_create :activation
 
 	def self.mk_token
 		SecureRandom.urlsafe_base64
@@ -35,16 +36,25 @@ class User < ApplicationRecord
 
 	def activation
 		self.activation_token = User.mk_token
-		self.update_columns(activation_digest: User.digest(activation_token), updated_at: Time.zone.now)
+		# self.update_columns(activation_digest: User.digest(activation_token), updated_at: Time.zone.now)
+		self.activation_digest = User.digest(activation_token)
 	end
 
 	def authenticated?(attribute, token)
-		digest = self.send("#{attribute}_token")
+		digest = self.send("#{attribute}_digest")
 		return false if digest.nil?
-		BCrypt::Password.new(token).is_password?(digest)
+		BCrypt::Password.new(digest).is_password?(token)
 	end
 
 	def send_email(mailtype)
 		UserMailer.send("#{mailtype}", self).deliver_now
+	end
+
+	def activate_user
+		self.update_columns(activated: true, activated_at: Time.zone.now)
+	end
+
+	def test
+		return self.activation_token
 	end
 end
