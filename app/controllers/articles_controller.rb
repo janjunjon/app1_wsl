@@ -22,8 +22,6 @@ class ArticlesController < ApplicationController
 		filename = dir + "Juntaro ISHIHARA_2020.pdf"
 		s3 = Aws::S3::Client.new(
 			:region => 'ap-northeast-1',
-			:access_key_id => 'AKIAX37AW7MND57NGIW2',
-			:secret_access_key => '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'
 		)
 		# bucket = s3.buckets['www.lagis.index']
 		@bucket = s3.list_buckets.buckets[1]
