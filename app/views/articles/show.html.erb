@@ -3,8 +3,13 @@
 	<h2 class="contents">
 		<%= @article.title %>
 	</h2>
-	<h4 class="contents"><%= @article.author %></h4>
-	<h4 class="contents"><%= @article.year %></h4>
-	<h4 class="contents"><%= @article.degree %></h4>
+	<div class="floating">
+		<h4 class="contents"><%= @article.author %></h4>
+		<h4 class="contents"><%= @article.year %></h4>
+		<h4 class="contents"><%= @article.degree %></h4>
+		<h4>
+			<%= link_to 'download', download_path(1), class: "contents" %>
+		</h4>
+	</div>
 	<p class="contents"><%= @article.abstract %></p>
 </div>
