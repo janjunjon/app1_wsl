@@ -33,7 +33,7 @@ Rails.application.configure do
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :amazon
 
-  host = "example.com"
+  host = "192.168.33.10:3000"
   config.action_mailer.default_url_options = { host: host, protocol: 'http' }
 
   # Don't care if the mailer can't send.

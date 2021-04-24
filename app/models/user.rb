@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-	attr_accessor :remember_token, :activation_token
+	attr_accessor :remember_token, :activation_token, :password_reset_token
 	validates :name, presence: true, length: { maximum: 20 }
 	valid_format = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 	validates :email, presence: true, length: { maximum: 200 }, format: { with: valid_format}, uniqueness: true
@@ -9,6 +9,7 @@ class User < ApplicationRecord
 	has_secure_password
 	has_one_attached :image
 	# mount_uploader :image, ImageUploader
+	before_create :activation
 
 	def self.mk_token
 		SecureRandom.urlsafe_base64
@@ -35,16 +36,35 @@ class User < ApplicationRecord
 
 	def activation
 		self.activation_token = User.mk_token
-		self.update_columns(activation_digest: User.digest(activation_token), updated_at: Time.zone.now)
+		# self.update_columns(activation_digest: User.digest(activation_token), updated_at: Time.zone.now)
+		self.activation_digest = User.digest(activation_token)
+	end
+
+	def password_reset
+		self.password_reset_token = User.mk_token
+		self.update_attribute(:password_reset_digest, User.digest(password_reset_token))
+		# if self.password_reset_digest.nil?
+		# 	self.password_reset_digest = User.digest(password_reset_token)
+		# else
+		# 	self.update_attribute(:password_reset_digest, User.digest(password_reset_token))
+		# end
 	end
 
 	def authenticated?(attribute, token)
-		digest = self.send("#{attribute}_token")
+		digest = self.send("#{attribute}_digest")
 		return false if digest.nil?
-		BCrypt::Password.new(token).is_password?(digest)
+		BCrypt::Password.new(digest).is_password?(token)
 	end
 
 	def send_email(mailtype)
 		UserMailer.send("#{mailtype}", self).deliver_now
+	end
+
+	def activate_user
+		self.update_columns(activated: true, activated_at: Time.zone.now)
+	end
+
+	def escape_email
+		CGI.escape(self.email)
 	end
 end

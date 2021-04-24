@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'password_resets/new'
+  get 'password_resets/edit'
   get '/lagis', to: 'codes#index', as: :lagis
   post '/lagis', to: 'codes#post', as: :lagis_post
   get '/lagis/delete', to: 'codes#delete'
@@ -14,4 +16,5 @@ Rails.application.routes.draw do
   # get 'account_activations/:token/edit', to: 'account_activations#edit'
   resources :users
   resources :account_activations, only: [:edit]
+  resources :password_resets, only: [:new, :create, :edit, :update]
 end
