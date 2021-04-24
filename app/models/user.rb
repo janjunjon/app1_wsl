@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-	attr_accessor :remember_token, :activation_token
+	attr_accessor :remember_token, :activation_token, :password_reset_token
 	validates :name, presence: true, length: { maximum: 20 }
 	valid_format = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 	validates :email, presence: true, length: { maximum: 200 }, format: { with: valid_format}, uniqueness: true
@@ -40,6 +40,16 @@ class User < ApplicationRecord
 		self.activation_digest = User.digest(activation_token)
 	end
 
+	def password_reset
+		self.password_reset_token = User.mk_token
+		self.update_attribute(:password_reset_digest, User.digest(password_reset_token))
+		# if self.password_reset_digest.nil?
+		# 	self.password_reset_digest = User.digest(password_reset_token)
+		# else
+		# 	self.update_attribute(:password_reset_digest, User.digest(password_reset_token))
+		# end
+	end
+
 	def authenticated?(attribute, token)
 		digest = self.send("#{attribute}_digest")
 		return false if digest.nil?
@@ -54,7 +64,7 @@ class User < ApplicationRecord
 		self.update_columns(activated: true, activated_at: Time.zone.now)
 	end
 
-	def test
-		return self.activation_token
+	def escape_email
+		CGI.escape(self.email)
 	end
 end

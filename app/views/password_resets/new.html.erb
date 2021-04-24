@@ -1,0 +1,12 @@
+<% provide(:botton_text, '送信') %>
+<% provide(:title, '再設定用のメール') %>
+<div class="page-title">
+    <h2><%= yield(:title) %></h2>
+</div>
+<div class="form">
+    <%= form_with(url: password_resets_path, scope: :password_reset, local: true) do |f| %>
+        <p><%= f.label :email %></p>
+        <p><%= f.email_field :email, class: "form-control" %></p>
+        <p><%= f.submit yield(:botton_text), class: "btn btn-block btn-primary" %></p>
+    <% end %>
+</div>

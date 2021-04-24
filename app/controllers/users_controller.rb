@@ -14,7 +14,9 @@ class UsersController < ApplicationController
       @user.save
       @user.send_email("account_activation")
       redirect_to root_path
-      flash[:success] = "ユーザー認証のために、登録したメールアドレスを確認してください。"
+      message = "ユーザー認証のために、登録したメールアドレスを確認してください。"
+      message += "http://192.168.33.10:3000/account_activations/#{@user.activation_token}/edit?email=#{@user.escape_email}"
+      flash[:success] = message
     else
       redirect_to new_user_path
       flash[:danger] = '入力情報が有効ではありません。'
