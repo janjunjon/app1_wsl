@@ -7,44 +7,33 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 array = ["学士", "修士", "博士"]
-Article.create!(title: "Differences of atmospheric fields between years with heavy rain and little rain over Kyushu region",
-				author: "Juntaro ISHIHARA",
+Article.create!(title: "九州地方における、梅雨期降水の多い年と少ない年の大気場の違いに関する研究",
+				author: "石原淳太郎",
 				year: 2020,
-				abstract: "Heavy rain accompanied by Baiu front is often 
-						observed over Kyushu region in Baiu season. 
-						In addition, a damage with this phenomenon 
-						at the same time is quite serious. Thus, 
-						there are many researches about rainfall 
-						in Baiu season. In this paper, 
-						by using average precipitation of each year from 2000 
-						to 2019 we quantitatively captured, 
-						each characteristics of years with heavy rain 
-						and little rain. Top 5 years are defined as years 
-						with heavy rain, by choosing 5 years in the highest 
-						order. In contrast, Bottom 5 years are defined 
-						as years with little rain, by choosing 5 years 
-						in the lowest order. As a result, in years 
-						with heavy rain, amounts of water vapor over 
-						Kyushu and that carried to Kyushu region are 
-						more than normal year. In opposition, amounts 
-						of water vapor over Kyushu and surrounding areas, 
-						and that carried to Kyushu region are less than 
-						normal year in years with little rain. Moreover, 
-						there was a statistical difference between years 
-						with heavy rain and years with little rain in water 
-						vapor flux divergence, and we revealed that 
-						precipitation depends on water vapor flux divergence. 
-						Besides, sea surface temperature of both years with 
-						heavy rain and little rain from east China sea to 
-						off Kyushu region was higher than normal year. 
-						In contrast to this, sea surface temperature of 
-						both years with heavy rain and little rain was 
-						lower over south of east China sea. From a view 
-						point of relative vorticity, a disturbance over 
-						north off Kyushu was stronger in years with heavy 
-						rain, and high pressure over south off Kyushu was stronger 
-						in years with little rain.",
-				degree: array[0])
+				abstract: "梅雨期において、九州地方では梅雨前線に伴う強い降水が度々見られ
+				る。加えて、それに伴う被害も甚大であり、梅雨期の降水に関する研究
+				は多くなされている。本研究では、2000 年から 2019 年各年の梅雨期間
+				内の降水量を平均し、降水量の多い年・少ない年の特徴を定量的に捉え
+				た。梅雨期降水量の平年比が高い 5 年を降水量が多い年とし、梅雨期降
+				水量の平年比が低い 5 年を降水量が少ない年とした。また、それ以外の
+				10 年はその他 10 年とした。降水量が多い年では、九州地方の大気の水
+				蒸気量がその他 10 年より多く、九州地方へ輸送される水蒸気量もその
+				他 10 年より多いことが分かった。一方で、降水量が少ない年では、九州
+				地方とその周辺で大気の水蒸気量がその他 10 年より少なく、九州地方
+				へ輸送される水蒸気量もその他 10 年より少ないことが分かった。さら
+				に、九州地方における水蒸気収束量は降水量の多い年と少ない年で統計
+				的に有意な差が見られたうえで、降水量は水蒸気収束量に大きく依存す
+				ることが分かった。海面水温においては、降水量が多い年・少ない年ど
+				ちらとも、九州地方の西の海上でその他 10 年よりも海面水温が高い一
+				方、東シナ海南部でその他 10 年よりも海面水温が低いことが分かった。
+				また、降水量の多い年と少ない年の相対渦度を比較すると、降水量の多
+				い年では、九州の北側にある低気圧性の渦がその他 10 年より強く、降
+				水量の少ない年では、九州の南側の高気圧性の渦が強いことが分かった。",
+				degree: array[0],
+				created_at: Time.zone.now,
+				updated_at: Time.zone.now,
+				romaji_name: "JuntaroISHIHARA"
+				)
 
 30.times do |n|
 	title = "test research #{n}"
@@ -57,7 +46,8 @@ Article.create!(title: "Differences of atmospheric fields between years with hea
 					abstract: abstract,
 					degree: array[rand(0..2)],
 					created_at: Time.zone.now,
-					updated_at: Time.zone.now)
+					updated_at: Time.zone.now,
+					romaji_name: author)
 end
 
 # 30.times do |n|
