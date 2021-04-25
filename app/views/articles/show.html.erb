@@ -4,12 +4,12 @@
 		<%= @article.title %>
 	</h2>
 	<div class="floating">
-		<h4 class="contents"><%= @article.author %></h4>
-		<h4 class="contents"><%= @article.year %></h4>
-		<h4 class="contents"><%= @article.degree %></h4>
-		<h4>
-			<%= link_to 'download', download_path(1), class: "contents" %>
-		</h4>
+		<h4 class="content-start"><%= @article.author %></h4>
+		<h4 class="content"><%= @article.year %></h4>
+		<h4 class="content-end"><%= @article.degree %></h4>
 	</div>
-	<p class="contents"><%= @article.abstract %></p>
+	<p class="abstract"><%= @article.abstract %></p>
+	<h4>
+		<%= link_to 'PDFダウンロード', download_path(@article.id), class: "contents" %>
+	</h4>
 </div>

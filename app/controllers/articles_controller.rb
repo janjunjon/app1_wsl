@@ -19,21 +19,20 @@ class ArticlesController < ApplicationController
 	def download
 		@article = Article.find_by(id: params[:id])
 		dir = "articles/"
-		filename = dir + "Juntaro ISHIHARA_2020.pdf"
+		filename = dir + "#{@article.romaji_name}_#{@article.year}.pdf"
 		s3 = Aws::S3::Client.new(
 			:region => 'ap-northeast-1',
+			:access_key_id => Rails.application.credentials.aws[:access_key_id],
+			:secret_access_key => Rails.application.credentials.aws[:secret_access_key]
 		)
-		# bucket = s3.buckets['www.lagis.index']
 		@bucket = s3.list_buckets.buckets[1]
 		@objects = s3.list_objects_v2(
-			bucket: @bucket.name,
-			max_keys: 10
+			bucket: @bucket.name
 		).contents
 		@paper = s3.get_object(
 			bucket: @bucket.name,
 			key: filename
 		).body
 		send_data @paper.read, filename: filename, disposition: 'attachment', type: 'pdf'
-		redirect_to @article
 	end
 end

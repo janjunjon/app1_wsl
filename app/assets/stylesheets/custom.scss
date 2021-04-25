@@ -160,6 +160,25 @@ nav a {
     padding: 20px;
 }
 
+.content {
+    padding-left: 20px;
+    float: left;
+}
+
+.content-start {
+    padding-left: 20px;
+    float: left;
+}
+
+.content-end { 
+    padding: 0px 20px;
+    float: left;
+}
+
+.abstract {
+    padding: 60px 20px 20px 20px;
+}
+
 .login {
     margin: 0;
     background-color: gray;
