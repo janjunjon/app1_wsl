@@ -33,6 +33,8 @@ module SessionsHelper
         elsif cookies.signed[:user_id]
             cookies.delete(:user_id)
         end
+        session.delete(:lagis_id)
+        session.delete(:lagis_authentication)
     end
 
     def remember(user)
