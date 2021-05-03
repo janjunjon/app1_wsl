@@ -8,7 +8,7 @@ class PasswordResetsController < ApplicationController
       @user.password_reset
       @user.send_email("password_reset")
       message = "メールアドレスにパスワード再設定用のメールを送信しました、確認してください。"
-      message += "http://192.168.33.10:3000/password_resets/#{@user.password_reset_token}/edit?email=#{@user.escape_email}"
+      # message += "http://192.168.33.10:3000/password_resets/#{@user.password_reset_token}/edit?email=#{@user.escape_email}"
       flash[:success] = message
       redirect_to root_path
     else

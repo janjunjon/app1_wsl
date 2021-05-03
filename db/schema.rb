@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2021_04_25_052352) do
     t.string "title"
     t.string "author"
     t.integer "year"
-    t.string "abstract"
+    t.string "abstract", limit: 1000
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "degree"
