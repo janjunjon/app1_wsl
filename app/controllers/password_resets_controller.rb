@@ -6,9 +6,8 @@ class PasswordResetsController < ApplicationController
     @user = User.find_by(email: params[:password_reset][:email])
     if @user && @user.activated?
       @user.password_reset
-      @user.send_email("password_reset")
+      UserMailer.password_reset(@user, @user.password_reset_token).deliver_now
       message = "メールアドレスにパスワード再設定用のメールを送信しました、確認してください。"
-      # message += "http://192.168.33.10:3000/password_resets/#{@user.password_reset_token}/edit?email=#{@user.escape_email}"
       flash[:success] = message
       redirect_to root_path
     else

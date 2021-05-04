@@ -57,7 +57,11 @@ class User < ApplicationRecord
 	end
 
 	def send_email(mailtype)
-		UserMailer.send("#{mailtype}", self).deliver_now
+		# UserMailer.send("#{mailtype}", self).deliver_now
+	end
+
+	def account_activation_mail
+		UserMailer.account_activation(self, self.activation_token).deliver_now
 	end
 
 	def activate_user

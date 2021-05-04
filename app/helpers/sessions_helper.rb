@@ -33,8 +33,8 @@ module SessionsHelper
         elsif cookies.signed[:user_id]
             cookies.delete(:user_id)
         end
-        session.delete(:lagis_id)
-        session.delete(:lagis_authentication)
+        # session.delete(:lagis_id)
+        # session.delete(:lagis_authentication)
     end
 
     def remember(user)
@@ -56,7 +56,6 @@ module SessionsHelper
     def is_lagis?
         # if !cookies.permanent.signed[:id] && !cookies.permanent[:lagis_autentication]
         if !session[:lagis_id] && !session[:lagis_authentication]
-            session[:current_url] = request.referer
             redirect_to lagis_path
             flash[:danger] = "Lagis認証コードが確認できていません。"
         end
