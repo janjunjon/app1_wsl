@@ -65,4 +65,11 @@ module SessionsHelper
         session.delete(:lagis_id)
         session.delete(:lagis_authentication)
     end
+
+    def is_admin_user?
+        if current_user.admin == false
+            session[:current_url] = request.referer
+            redirect_to session[:current_url]
+        end
+    end
 end

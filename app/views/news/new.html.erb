@@ -1,0 +1,14 @@
+<% provide(:botton_text, 'post') %>
+<% provide(:title, 'news-post') %>
+<div class="page-title">
+    <h2><%= yield(:title) %></h2>
+</div>
+<div class="form">
+    <%= form_with(model: @news, local: true) do |f| %>
+        <p><%= f.label :title %></p>
+        <p><%= f.text_field :title, class: "form-control" %></p>
+        <p><%= f.label :contents %></p>
+        <p><%= f.text_field :contents, class: "form-control" %></p>
+        <p><%= f.submit yield(:botton_text), class: "btn btn-block btn-primary" %></p>
+    <% end %>
+</div>
