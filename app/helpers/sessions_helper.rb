@@ -8,6 +8,7 @@ module SessionsHelper
             session[:current_url] = request.referer
             redirect_to login_path
             flash[:danger] = "ログインしてください。"
+            session[:current_url] = nil
         end
     end
 
@@ -15,10 +16,10 @@ module SessionsHelper
         if session[:user_id]
             @current_user = User.find_by(id: session[:user_id])
         elsif cookies.signed[:user_id]
-            @user = User.find_by(id: cookies.signed[:user_id])
-            if @user && @user.authenticated?("remember", cookies[:remember_token])
-                log_in @user
-                @current_user = @user
+            user = User.find_by(id: cookies.signed[:user_id])
+            if user && user.authenticated?("remember", cookies[:remember_token])
+                log_in user
+                @current_user = user
             end
         end
     end
@@ -70,6 +71,7 @@ module SessionsHelper
         if current_user.admin == false
             session[:current_url] = request.referer
             redirect_to session[:current_url]
+            session[:current_url] = nil
         end
     end
 end

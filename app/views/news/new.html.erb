@@ -4,11 +4,13 @@
     <h2><%= yield(:title) %></h2>
 </div>
 <div class="form">
-    <%= form_with(model: @news, local: true) do |f| %>
+    <%= form_with(url: news_index_path, local: true) do |f| %>
         <p><%= f.label :title %></p>
         <p><%= f.text_field :title, class: "form-control" %></p>
         <p><%= f.label :contents %></p>
         <p><%= f.text_field :contents, class: "form-control" %></p>
+        <p><%= f.label :info %></p>
+        <p><%= f.text_field :info, class: "form-control" %></p>
         <p><%= f.submit yield(:botton_text), class: "btn btn-block btn-primary" %></p>
     <% end %>
 </div>

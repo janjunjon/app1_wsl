@@ -33,22 +33,22 @@ Article.create!(title: "九州地方における、梅雨期降水の多い年�
 				created_at: Time.zone.now,
 				updated_at: Time.zone.now,
 				romaji_name: "JuntaroISHIHARA"
-				)
+)
 
-30.times do |n|
-	title = "test research #{n}"
-	author = Faker::Name.name
-	year = rand(2000..2020)
-	abstract = Faker::Lorem.sentence(word_count: 100)
-	Article.create!(title: title,
-					author: author,
-					year: year,
-					abstract: abstract,
-					degree: array[rand(0..2)],
-					created_at: Time.zone.now,
-					updated_at: Time.zone.now,
-					romaji_name: author)
-end
+# 30.times do |n|
+# 	title = "test research #{n}"
+# 	author = Faker::Name.name
+# 	year = rand(2000..2020)
+# 	abstract = Faker::Lorem.sentence(word_count: 100)
+# 	Article.create!(title: title,
+# 					author: author,
+# 					year: year,
+# 					abstract: abstract,
+# 					degree: array[rand(0..2)],
+# 					created_at: Time.zone.now,
+# 					updated_at: Time.zone.now,
+# 					romaji_name: author)
+# end
 
 # 30.times do |n|
 # 	name = "test_user#{n}"
@@ -64,10 +64,36 @@ end
 # 	)
 # end
 
-Code.create!(
-	classification: "Lagis authentication",
-	password: "lagis_info",
-	password_confirmation: "lagis_info",
+User.create!(
+	name: "lagis_test_user",
+	email: "lagis@example.com",
+	password: "password",
+	password_confirmation: "password",
+	activated: true,
 	created_at: Time.zone.now,
 	updated_at: Time.zone.now
-	)
+)
+
+News.create!(
+	title: "APP",
+	contents: "リリースしました。",
+	info: "news-default",
+	created_at: Time.zone.now,
+	updated_at: Time.zone.now
+)
+
+News.create!(
+	title: "other",
+	contents: "21年卒業生に試用してもらいました。",
+	info: "other",
+	created_at: Time.zone.now,
+	updated_at: Time.zone.now
+)
+
+News.create!(
+	title: "Lagis",
+	contents: "Lagis卒論インデックスの運用が始まりました。",
+	info: "commodity",
+	created_at: Time.zone.now,
+	updated_at: Time.zone.now
+)

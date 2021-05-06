@@ -26,7 +26,7 @@ class ArticlesController < ApplicationController
 			:secret_access_key => Rails.application.credentials.aws[:secret_access_key]
 		)
 		Aws.use_bundled_cert!
-		@bucket = s3.list_buckets.buckets[1]
+		@bucket = s3.list_buckets.buckets[2]
 		@objects = s3.list_objects_v2(
 			bucket: @bucket.name
 		).contents

@@ -10,11 +10,10 @@ class NewsController < ApplicationController
       @news.save
       redirect_to root_path
       flash[:info] = 'you success post news.'
+    else
+      render 'news/edit'
+      flash[:danger] = "what you posted was invalid."
     end
-  end
-
-  def show
-    @news = News.find_by(id: params[:id])
   end
 
   def update
@@ -23,11 +22,18 @@ class NewsController < ApplicationController
       @news.update(news_params)
       redirect_to root_path
       flash[:info] = 'you success post update.'
+    else
+      render 'news/edit'
+      flash[:danger] = "what you posted was invalid."
     end
   end
 
   def index
-    @news = News.all
+    @news = News.order(created_at: :desc).limit(7)
+  end
+
+  def past
+    @news = News.all.order(created_at: :desc)
   end
 
   def destroy
@@ -41,6 +47,6 @@ class NewsController < ApplicationController
 
   private
     def news_params
-      params.require(:news).permit(:title, :contents)
+      params.permit(:title, :contents, :info)
     end
 end

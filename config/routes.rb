@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   # root 'static_pages#top'
   root 'news#index'
+  get 'news/past', to: 'news#past'
   get 'articles', to: 'articles#index'
   get 'article/:id', to: 'articles#show', as: :article
   get 'articles/search', to: 'articles#search', as: :search
@@ -17,5 +18,5 @@ Rails.application.routes.draw do
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets, only: [:new, :create, :edit, :update]
-  resources :news, only: [:new, :create, :show, :edit, :update, :destroy]
+  resources :news, only: [:new, :create, :edit, :update, :destroy]
 end

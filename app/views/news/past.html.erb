@@ -1,6 +1,6 @@
-<% provide(:title, 'トップページ') %>
+<% provide(:title, '過去のNEWS') %>
 <div class="page-title">
-    <h2>NEWS</h2>
+    <h2>Past NEWS</h2>
 </div>
 <div class="top-page">
     <dl>
@@ -10,9 +10,9 @@
                     <p><%= news.created_at.strftime("%Y/%m/%d") %></p>
                 </dt>
                 <%= link_to news.title, '#', class: news.info %>
-                <dd><%= link_to news.contents, '#' %></dd>
+                <dd><%= link_to news.contents, news_path(news.id) %></dd>
             </div>
         <% end %>
     </dl>
-    <p><%= link_to 'past News', news_past_path, class: "past-news-link" %></p>
+    <p><%= link_to 'Top Page', root_path, class: "past-news-link" %></p>
 </div>
