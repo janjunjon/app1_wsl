@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  require 'aws-sdk-core'
   before_action :is_lagis?
   before_action :logged_in_user, only: [:show, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]

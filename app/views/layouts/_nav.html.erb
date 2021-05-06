@@ -7,6 +7,11 @@
             <li class="nav-item active">
               <%= link_to 'ログアウト', logout_path, method: :delete, class: "nav-logout nav-hover" %>
             </li>
+            <% if current_user.admin == true %>
+              <li class="nav-item active">
+                <%= link_to 'new_news_path', new_news_path, class: "nav-link nav-hover" %>
+              </li>
+            <% end %>
           <% else %>
             <li class="nav-item disabled">
               <%= link_to 'ユーザーなし', '#', class: "nav-link nav-hover" %>

@@ -16,8 +16,12 @@ class SessionsController < ApplicationController
           forget @user
         end
         flash[:success] = "ログインしました。"
-        redirect_to session[:current_url]
-        session[:current_url] = nil
+        if session[:current_url]
+          redirect_to session[:current_url]
+          session[:current_url] = nil
+        else
+          redirect_to root_path
+        end
       else
         flash[:danger] = "アカウントが有効化されていません。"
         redirect_to root_path
