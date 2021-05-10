@@ -8,4 +8,10 @@ RSpec.describe "Codes", type: :request do
     end
   end
 
+  describe "POST /post" do
+    it "should be rendered to code/index" do
+    end
+    it "should be redirected, if lagis authentication code was correct" do
+    end
+  end
 end

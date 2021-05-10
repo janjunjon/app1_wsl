@@ -9,7 +9,7 @@ class CodesController < ApplicationController
       # cookies.permanent[:lagis_authentication] = params[:code][:password]
       session[:lagis_id] = 1
       session[:lagis_authentication] = params[:code][:password]
-      redirect_to session[:current_url]
+      redirect_to root_path
       flash[:success] = "Lagisの認証コードが確認できました。"
     else
       render 'codes/index'
