@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   require 'aws-sdk-core'
   before_action :is_lagis?
-  before_action :logged_in_user, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:index, :show, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
   before_action :already_logged_in, only: [:new, :create]
 
@@ -18,7 +18,7 @@ class UsersController < ApplicationController
       message = "ユーザー認証のために、登録したメールアドレスを確認してください。"
       flash[:success] = message
     else
-      redirect_to new_user_path
+      render 'users/new'
       flash[:danger] = '入力情報が有効ではありません。'
     end
   end

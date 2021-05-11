@@ -8,7 +8,6 @@ module SessionsHelper
             session[:current_url] = request.referer
             redirect_to login_path
             flash[:danger] = "ログインしてください。"
-            session[:current_url] = nil
         end
     end
 
@@ -71,6 +70,7 @@ module SessionsHelper
         if current_user.admin == false
             session[:current_url] = request.referer
             redirect_to session[:current_url]
+            flash[:danger] = "you are not admin user."
             session[:current_url] = nil
         end
     end
