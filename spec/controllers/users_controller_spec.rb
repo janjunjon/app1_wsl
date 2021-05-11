@@ -25,13 +25,13 @@ RSpec.describe UsersController, type: :controller do
 
   describe "GET #index" do
     it "users should be displayed with desc, limit 30" do
+      get users_path
     end
   end
 
   describe "GET #show" do
     it "returns http success" do
-      log_in_as(@user)
-      get :show
+      get :show, params: {id: 1}
       expect(response).to have_http_status(:success)
     end
   end

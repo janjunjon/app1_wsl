@@ -6,5 +6,5 @@ RSpec.describe StaticPagesController, type: :controller do
   #     get :top
   #     expect(response).to have_http_status(:success)
   #   end
-  end
+  # end
 end

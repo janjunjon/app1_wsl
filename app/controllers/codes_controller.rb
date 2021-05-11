@@ -3,7 +3,7 @@ class CodesController < ApplicationController
   end
 
   def post
-    @code = Code.find(1)
+    @code = Code.first
     if @code.authenticate(params[:code][:password])
       # cookies.permanent.signed[:lagis_id] = 1
       # cookies.permanent[:lagis_authentication] = params[:code][:password]
