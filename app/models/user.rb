@@ -36,8 +36,8 @@ class User < ApplicationRecord
 
 	def activation
 		self.activation_token = User.mk_token
-		self.update_columns(activation_digest: User.digest(activation_token), activated_at: Time.zone.now)
-		# self.activation_digest = User.digest(activation_token)
+		# self.update_columns(activation_digest: User.digest(activation_token), activated_at: Time.zone.now)
+		self.activation_digest = User.digest(activation_token)
 	end
 
 	def password_reset
