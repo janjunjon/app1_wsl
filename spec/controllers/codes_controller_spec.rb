@@ -5,7 +5,7 @@ RSpec.describe CodesController, type: :controller do
         password = "authentication"
         @code = Code.new(classification: "test_authentication",
                          password: password,
-                         password_confirmation: password)
+                         password_confirmation: password).save
     end
 
     describe "GET #index" do 

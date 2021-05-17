@@ -51,6 +51,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # gem 'sqlite3', '~> 1.4'
   gem 'rspec-rails', '~> 4.0'
+  gem 'rspec-support', '~> 3.10'
   gem 'spring-commands-rspec'
   gem 'guard-rspec', require: false
   gem 'rubocop', require: false
@@ -73,7 +74,7 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
-  # gem 'rails-controller-testing', '1.0.4'
+  gem 'rails-controller-testing', '~> 1.0.4'
   # gem 'minitest',                 '5.11.3'
   # gem 'minitest-reporters',       '1.3.8'
 end
