@@ -11,7 +11,7 @@ class NewsController < ApplicationController
       redirect_to root_path
       flash[:info] = 'you success post news.'
     else
-      render 'news/edit'
+      render 'news/new'
       flash[:danger] = "what you posted was invalid."
     end
   end
