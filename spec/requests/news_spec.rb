@@ -26,12 +26,16 @@ RSpec.describe "News", type: :request do
 
   describe "GET /new" do
     it "returns http success" do
-      log_in @user
+      # log_in @user
+      post '/login', params: { session: { email: "test@example.com",
+                                           password: "password" } }
       get "/news/new"
       expect(response).to have_http_status(:success)
     end
     it "redirected to root if not admin user" do
-      log_in @user2
+      # log_in @user2
+      post '/login', params: { session: { email: "test2@example.com",
+                                          password: "password" } }
       get "/news/new"
       expect(response).to redirect_to root_path
     end
@@ -39,13 +43,17 @@ RSpec.describe "News", type: :request do
 
   describe "POST /create" do
     it "news can be posted by admin user" do
-      log_in @user
+      # log_in @user
+      post '/login', params: { session: { email: "test@example.com",
+                                          password: "password" } }
       post '/news', params: {title: "test", contents: "This is a test.", info: "test"}
       expect(response).to redirect_to(root_path)
       expect(flash[:info]).to eq 'you success post news.'
     end
     it "rendered if post was invalid" do
-      log_in @user
+      # log_in @user
+      post '/login', params: { session: { email: "test@example.com",
+                                          password: "password" } }
       post '/news', params: {title: "test"}
       expect(response).to render_template('news/new')
       expect(flash[:danger]).to eq "what you posted was invalid."
