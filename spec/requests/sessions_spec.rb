@@ -52,7 +52,7 @@ RSpec.describe "Sessions", type: :request do
       post '/login', params: { session: { email: "test@example.com",
                                           password: "password" } }
       expect(flash[:success]).to eq "ログインしました。"
-      expect(response).to redirect_to users_path
+      expect(response).to redirect_to root_path
     end
     it "should be redirected to root if session is nil" do
       post '/login', params: { session: { email: "test@example.com",

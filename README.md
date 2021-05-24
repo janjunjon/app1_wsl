@@ -11,7 +11,7 @@
 ※現在は教員と相談の後、運用は停止しています。
 
 **サイトURL、プレビュー**
-* http://lagis-index.com
+* http://lagis-index.com (※認証コード："lagis_info")
 
 
 **機能(代表的なもののみ)**

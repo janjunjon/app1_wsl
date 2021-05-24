@@ -51,6 +51,7 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find_by(id: params[:id])
     @user.destroy
+    logout
     flash[:info] = "ユーザーを削除しました。"
     redirect_to root_path
   end
