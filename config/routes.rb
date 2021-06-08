@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   # root 'static_pages#top'
   root 'news#index'
   get 'news/past', to: 'news#past'
+  get 'react_articles', to: 'articles#react_index'
   get 'articles', to: 'articles#index'
   get 'article/:id', to: 'articles#show', as: :article
   get 'articles/search', to: 'articles#search', as: :search

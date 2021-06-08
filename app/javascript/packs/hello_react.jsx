@@ -18,9 +18,14 @@ Hello.propTypes = {
   name: PropTypes.string
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(
-    <Hello name="React" />,
-    document.body.appendChild(document.createElement('div')),
-  )
-})
+ReactDOM.render(
+  <Hello/>,
+  document.getElementById('react_article')
+);
+
+// document.addEventListener('DOMContentLoaded', () => {
+//   ReactDOM.render(
+//     <Hello name="React" />,
+//     document.body.appendChild(document.createElement('div')),
+//   )
+// })
