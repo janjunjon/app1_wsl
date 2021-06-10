@@ -1,0 +1,5 @@
+<% provide(:title, 'react_each_article') %>
+<%= react_component("Article", { article: @article} ) %>
+<div id="react_article"></div>
+<%= javascript_pack_tag 'react_article',
+                        'data-turbolinks-track': 'reload' %>

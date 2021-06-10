@@ -36,4 +36,12 @@ class ArticlesController < ApplicationController
 		).body
 		send_data @paper.read, filename: filename, disposition: 'attachment', type: 'pdf'
 	end
+
+	def react_index
+		@articles = Article.all
+	end
+
+	def react_show
+		@article = Article.find_by(id :params[:id])
+	end
 end
