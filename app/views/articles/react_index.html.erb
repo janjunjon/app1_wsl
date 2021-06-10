@@ -1,3 +1,6 @@
+<% provide(:title, 'react_articles') %>
+<%= react_component("Article", { articles: @articles} ) %>
+<%= react_component("HelloWorld", { greeting: "Hello from react-rails." }) %>
 <div id="react_article"></div>
 <%= javascript_pack_tag 'react_article',
                         'data-turbolinks-track': 'reload' %>

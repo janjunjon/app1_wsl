@@ -1,20 +1,55 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import PropTypes from "prop-types"
+// import {
+//     BrowserRouter as Router,
+//     Switch,
+//     Route,
+//     Link
+// } from "react-router-dom";
 
 const article = {id: 1, title: 'research0', author: 'jjthomson', year: 2020, degree: "bachelor", abstract: 'This is an article test.'}
 
-function IndexArticle(props) {
+// function IndexArticle(props) {
+//     return (
+//         <Router>
+//             <div className="elements">
+//                 <h2 className="contents">
+//                     <Switch>
+//                         <Route path="">
+//                             {props.article.title}
+//                         </Route>
+//                     </Switch>
+//                     <Link to={ {pathname: "/react_articles/" + props.article.id, state: {id: task.id}} }>
+//                         {props.article.title}
+//                     </Link>
+//                     <a href="#" onClick={ () => EachArticle(props)}>
+//                         {props.article.title}
+//                     </a>
+//                 </h2>
+//                 <p className="contents">
+//                     {props.article.abstract}
+//                 </p>
+//             </div>
+//         </Router>
+//     );
+// }
+
+function IndexArticles(props) {
     return (
-        <div className="elements">
-            <h2 className="contents">
-                <a href="#" onClick={ () => EachArticle(props)}>
-                    {props.article.title}
-                </a>
-            </h2>
-            <p className="contents">
-                {props.article.abstract}
-            </p>
-        </div>
+        console.log(props.articles)
+        // props.articles.map( article =>
+        //     <div className="elements">
+        //         <h2 className="contents">
+        //             <a href="#" onClick={ () => EachArticle(props)}>
+        //                 {article.title}
+        //             </a>
+        //         </h2>
+        //         <p className="contents">
+        //             {article.abstract}
+        //         </p>
+        //     </div>
+        // )
     );
 }
 
@@ -44,17 +79,17 @@ function EachArticle(props) {
 }
 
 class Article extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
-            article: article
+            articles: this.props.articles
         };
     }
     render() {
         return (
             <div>
-                <IndexArticle
-                    article={article}
+                <IndexArticles
+                    articles={this.state.articles}
                 />
             </div>
         );
@@ -64,5 +99,4 @@ class Article extends React.Component {
 ReactDOM.render(
     <Article/>,
     document.getElementById('react_article'),
-    // document.body.appendChild(document.createElement('div')),
 );

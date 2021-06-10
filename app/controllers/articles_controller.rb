@@ -40,4 +40,8 @@ class ArticlesController < ApplicationController
 	def react_index
 		@articles = Article.all
 	end
+
+	def react_show
+		@article = Article.find_by(id :params[:id])
+	end
 end

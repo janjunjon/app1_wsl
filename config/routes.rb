@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   root 'news#index'
   get 'news/past', to: 'news#past'
   get 'react_articles', to: 'articles#react_index'
+  get 'react_articles/:id', to: 'articles#react_show'
   get 'articles', to: 'articles#index'
   get 'article/:id', to: 'articles#show', as: :article
   get 'articles/search', to: 'articles#search', as: :search
