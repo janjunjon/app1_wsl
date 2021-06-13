@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   get 'news/past', to: 'news#past'
   get 'react_articles', to: 'articles#react_index'
   get 'react_articles/:id', to: 'articles#react_show'
+  # get 'react_test', to: 'articles#react_test'
+  defaults format: :json do
+    get 'react_test', to: 'articles#react_test'
+  end
   get 'articles', to: 'articles#index'
   get 'article/:id', to: 'articles#show', as: :article
   get 'articles/search', to: 'articles#search', as: :search
