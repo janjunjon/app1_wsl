@@ -1,5 +1,5 @@
-<% provide(:title, 'react_each_article') %>
-<%= react_component("Article", { article: @article} ) %>
+<% provide(:title, 'react_test') %>
+<%= react_component("Main", url: "/react_test" ) %>
 <div id="react_article"></div>
 <%= javascript_pack_tag 'react_article',
                         'data-turbolinks-track': 'reload' %>

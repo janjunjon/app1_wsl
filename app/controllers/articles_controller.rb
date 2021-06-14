@@ -42,6 +42,12 @@ class ArticlesController < ApplicationController
 	end
 
 	def react_show
-		@article = Article.find_by(id :params[:id])
+		id = params[:id].to_i
+		@article = Article.find(id)
+	end
+
+	def react_test
+		@articles = Article.all
+		# @article = Article.first
 	end
 end
