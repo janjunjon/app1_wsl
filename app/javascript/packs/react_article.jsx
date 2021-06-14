@@ -10,9 +10,9 @@ import {
 
 function IndexArticle(props) {
     return (
-        <div>
+        <div className="elements">
             <h2 className="contents">
-                <a onClick={ () => props.ToShow(props.article.id)}>
+                <a onClick={ () => props.ToShow(props.article.id)} className="ToShow">
                     {props.article.title}
                 </a>
             </h2>
@@ -34,39 +34,15 @@ function IndexArticles(props) {
         );
     });
     return (
-        <div className="elements">
-            {articles}
-            <a onClick={ () => props.ToShow(props.article.id)}>
-                To Show
-            </a>
-        </div>
-    );
-}
-
-function WhichArticle(props) {
-    const articles = props.articles.map(article => {
-        if (props.id === article.id) {
-            return (
-                <EachArticle
-                    article={article}
-                    key={article.id}
-                />
-            );
-        }
-    });
-    return (
         <div>
             {articles}
-            <a onClick={ () => props.ToIndex()}>
-                To Index
-            </a>
         </div>
     );
 }
 
 function EachArticle(props) {
     const article = props.article
-    console.log(article)    
+    const download_path = "/articles/" + article.id + "/download"
     return (
         <div>
             <h2 className="contents">
@@ -85,8 +61,60 @@ function EachArticle(props) {
             </div>
             <p className="abstract">{article.abstract}</p>
             <h4>
-                <a href="download_path(@article.id)" className="contents">PDFダウンロード</a>
+                <a href={download_path} className="contents">PDFダウンロード</a>
             </h4>
+            <h4>
+                <a onClick={ () => props.ToIndex()} className="react_contents">記事一覧</a>
+            </h4>            
+        </div>
+    );
+}
+
+function WhichArticle(props) {
+    const articles = props.articles.map(article => {
+        if (props.id === article.id) {
+            return (
+                <EachArticle
+                    article={article}
+                    key={article.id}
+                    ToIndex={props.ToIndex}
+                />
+            );
+        }
+    });
+    return (
+        <div>
+            {articles}
+        </div>
+    );
+}
+
+function SearchArticle() {
+    return (
+        <div>
+            {/* <% if is_params_empty? %>
+                <% provide(:title, '論文検索') %>
+            <% else %>
+                <% provide(:title, '検索結果') %>
+            <% end %>
+            <div class="page-title">
+                <h2><%= yield(:title) %></h2>
+            </div>
+            <% if is_params_empty? %>
+                <div class="search">
+                    <%= render 'layouts/search' %>
+                </div>
+            <% else %>
+                <% @articles.each do |article| %>
+                    <div class="elements">
+                        <h2 class="contents">
+                            <%= link_to article.title, article_path(article) %>
+                        </h2>
+                        <p class="contents"><%= article.abstract %></p>
+                    </div>
+                <% end %>
+                <%= will_paginate %>
+            <% end %> */}
         </div>
     );
 }
@@ -105,7 +133,7 @@ class Main extends React.Component {
     }
 
     componentDidMount() {
-        // console.log(this.props.url)
+        console.log(this.props.url)
         fetch("http://192.168.33.10:3000/react_test")
         // fetch(this.props.url)
             .then(res => res.json())
@@ -153,11 +181,19 @@ class Main extends React.Component {
                 Article = (() =>
                     <WhichArticle
                         articles={this.state.articles}
-                        id={}
+                        id={this.state.id}
                         ToIndex={this.ToIndex}
                     />
                 );
                 break;
+            case "react_search":
+            Article = (() => 
+                <SearchArticle
+                    keyword={this.state.keyword}
+                    degree={this.state.degree}
+                    year={this.state.year}
+                />
+            );
         }
         return (
             <div>
