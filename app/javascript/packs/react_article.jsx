@@ -89,32 +89,55 @@ function WhichArticle(props) {
     );
 }
 
-function SearchArticle() {
+function SearchArticlePage() {
     return (
         <div>
-            {/* <% if is_params_empty? %>
-                <% provide(:title, '論文検索') %>
-            <% else %>
-                <% provide(:title, '検索結果') %>
-            <% end %>
-            <div class="page-title">
-                <h2><%= yield(:title) %></h2>
+            {/* <div class="page-title">
+                <h2>論文検索</h2>
             </div>
-            <% if is_params_empty? %>
-                <div class="search">
-                    <%= render 'layouts/search' %>
-                </div>
-            <% else %>
-                <% @articles.each do |article| %>
-                    <div class="elements">
-                        <h2 class="contents">
-                            <%= link_to article.title, article_path(article) %>
-                        </h2>
-                        <p class="contents"><%= article.abstract %></p>
-                    </div>
+            <div class="search">
+                <%= form_with(url: search_path, method: :get) do |f|  %>
+                    <p><%= f.label :"学位" %></p>
+                    <p><%= f.select :degree, [[""], ["学士"], ["修士"], ["博士"]], {}, class: 'form-control' %></p>
+                    <p><%= f.label :"キーワード" %></p>
+                    <p><%= f.text_field :keyword, class: 'form-control' %></p>
+                    <p><%= f.label :"年度" %></p>
+                    <p><%= f.text_field :year, class: 'form-control' %></p>    
+                    <p class="search-button"><%= f.submit 'search', class: "btn btn-block btn-primary" %></p>
                 <% end %>
-                <%= will_paginate %>
-            <% end %> */}
+            </div> */}
+        </div>
+    );
+}
+
+function SearchArticle(props) {
+    const articles = props.articles.map(article => {
+        return (
+            <ShowSearchResult
+                article={article}
+            />
+        );
+    });
+    return (
+        <div>
+            {articles}
+        </div>
+    );
+}
+
+function ShowSearchResult(props) {
+    const article = props.article
+    return (
+        <div>
+            <div class="page-title">
+                <h2>検索結果</h2>
+            </div>
+            <div class="elements">
+                <h2 class="contents">
+                    <a>article.title</a>
+                </h2>
+                <p class="contents">article.abstract</p>
+            </div>
         </div>
     );
 }
