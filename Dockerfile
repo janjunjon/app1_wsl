@@ -1,42 +1,33 @@
 FROM ruby:2.6.6
 
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash && \
-    . ~/.nvm/nvm.sh && \
-    nvm install v14.16.1 && \
-    npm install --global yarn
+RUN apt-get update -qq
+RUN apt-get install -y build-essential
+# RUN apt-get install -y libreadline6
+# RUN apt-get install -y libreadline6-dev
+# RUN apt-get install -y zlib1g zlib1g-dev
 
-RUN apt-get update -qq && \
-    apt-get install -y build-essential \
-                       nodejs
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
+RUN apt-get install -y nodejs
+RUN npm install npm@latest -g
 
-# RUN apt-get update && apt-get install -y curl apt-transport-https wget && \
-#     curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
-#     echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
-#     apt-get update && apt-get install -y yarn
-
-RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
-    apt-get install -y nodejs
-
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash && \
-    . ~/.nvm/nvm.sh && \
-    source ~/.bash_profile && \
-    nvm install v14.17.4 && \
-    npm install --global yarn && \
-    sudo apt-get -y install imagemagick && \
+# RUN touch ~/.bash_profile
+# RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+# SHELL ["/bin/bash", "-c"]
+# RUN . ~/.nvm/nvm.sh
+# RUN nvm install v14.17.4
+RUN npm install --global yarn
+RUN apt-get -y install imagemagick
 
 RUN mkdir /app1
 WORKDIR /app1
-
-ADD /app1 /app1
-
-RUN gem install bundler:2.2.14 && \
-    bundle install && \
-    gem install multi_json -v '1.10.1'
-    rbenv exec gem install bundler
-    rbenv rehash
-
-# ADD docker-compose.yml /app1
-# ADD containers /app1
-# ADD environments /app1
-
+COPY . /app1
 RUN mkdir -p tmp/sockets
+
+RUN gem install sassc -v '2.4.0' --source 'https://rubygems.org/'
+RUN gem install multi_json -v '1.10.1'
+RUN gem install bundler:2.2.14
+RUN bundle update
+RUN bundle install
+RUN bundle exec rails webpacker:install
+
+
