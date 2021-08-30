@@ -1,13 +1,11 @@
 version: '3'
 services:
-  app1:
+  app:
     build:
       context: .
     env_file:
       - ./environments/db.env
-    # command: bundle exec puma -C config/puma.rb
-    # command: bundle exec rails s -b 192.168.33.10
-    command: bundle exec rails s -b 0.0.0.0
+    command: bundle exec rails s -b 192.168.33.10 -p 80
     volumes:
       - .:/app1
       - public-data:/app1/public
@@ -16,9 +14,9 @@ services:
     depends_on:
       - db
   db:
-    build: ./containers/mysql
-    # image: mysql:5.7
-    # image: mysql:8.0.24
+    # build:
+    #   context: containers/mysql
+    image: mysql:5.7
     env_file:
       - ./environments/db.env
     volumes:
@@ -32,7 +30,7 @@ services:
     ports:
       - 80:80
     depends_on:
-      - app1
+      - app
 volumes:
   public-data:
   tmp-data:
